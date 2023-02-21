@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { useTheme } from 'vuetify';
+import { useTheme } from "vuetify"
 
 const theme = useTheme()
 const toggleTheme = () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+const drawerColor = computed(() => theme.global.current.value.dark ? '#1F2A40' : undefined)
 </script>
 
 <template>
-  <v-app-bar color="#1F2A40">
+  <v-app-bar :color="drawerColor">
     <v-container fluid>
       <v-row justify="space-between" align="center">
         <v-col cols="3">

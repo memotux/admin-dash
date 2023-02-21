@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useTheme } from 'vuetify'
+
 const items = [
   { title: 'Dashboard', prependIcon: 'mdi:mdi-view-dashboard', to: '/' },
   { title: 'Data', type: 'subheader' },
@@ -16,17 +18,19 @@ const items = [
   { title: 'Geography Chart', prependIcon: 'fa-solid fa-map', to: '/geo' },
 ]
 
-const drawer = ref(true)
-const rail = ref(false)
+const ui = useUi()
+const theme = useTheme()
+const drawerColor = computed(() => theme.global.current.value.dark ? '#1F2A40' : undefined)
 </script>
 
 <template>
-  <v-navigation-drawer color="#1F2A40" v-model="drawer" :rail="rail" permanent @click="() => { rail = false }">
+  <v-navigation-drawer :color="drawerColor" v-model="ui.drawer" :rail="ui.rail" permanent
+    @click="() => { ui.rail = false }">
     <v-list>
-      <v-list-item v-show="!rail">
+      <v-list-item v-show="!ui.rail">
         <h1>ADMINIS</h1>
         <template #append>
-          <v-btn variant="text" icon="fa-solid fa-circle-chevron-left" @click.stop="() => { rail = !rail }"></v-btn>
+          <v-btn variant="text" icon="fa-solid fa-circle-chevron-left" @click.stop="() => { ui.rail = !ui.rail }"></v-btn>
         </template>
       </v-list-item>
       <v-list-item prepend-avatar="/favicon.ico" title="Romeo Méndez" />
@@ -37,7 +41,7 @@ const rail = ref(false)
     <v-list :lines="false" nav>
       <template v-for="(item) in items" :key="item.title">
         <v-list-subheader v-if="item.type === 'subheader'" :title="item.title" class="text-h6" />
-        <v-list-item v-else active-color="secondary" v-bind="item" />
+        <v-list-item v-else :active-color="drawerColor ? 'secondary' : 'primary'" v-bind="item" />
       </template>
     </v-list>
   </v-navigation-drawer>
