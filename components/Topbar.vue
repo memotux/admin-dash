@@ -14,10 +14,10 @@ const toggleTheme = () => theme.global.name.value = theme.global.current.value.d
             hide-details />
         </v-col>
         <v-col cols="3" class="text-right">
-          <v-btn icon="mdi:mdi-theme-light-dark" @click="toggleTheme" />
-          <v-btn icon="mdi:mdi-bell-outline" />
-          <v-btn icon="mdi:mdi-cog-outline" />
-          <v-btn icon="mdi:mdi-account" />
+          <v-btn icon="fa-solid fa-circle-half-stroke" @click="toggleTheme" />
+          <v-btn icon="fa-regular fa-bell" />
+          <v-btn icon="fa-solid fa-gear" />
+          <v-btn icon="fa-regular fa-user" />
         </v-col>
       </v-row>
     </v-container>
