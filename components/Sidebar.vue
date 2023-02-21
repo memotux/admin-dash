@@ -1,45 +1,43 @@
 <script setup lang="ts">
 const items = [
-  { title: 'Dashboard', icon: 'mdi:mdi-view-dashboard', to: '/' },
+  { title: 'Dashboard', prependIcon: 'mdi:mdi-view-dashboard', to: '/' },
   { title: 'Data', type: 'subheader' },
-  { title: 'Manage Team', icon: 'mdi:mdi-account-group', to: '/team' },
-  { title: 'Contacts', icon: 'mdi:mdi-contacts', to: '/contacts' },
-  { title: 'Invoices Balances', icon: 'mdi:mdi-receipt', to: '/invoices' },
+  { title: 'Manage Team', prependIcon: 'fa-solid fa-people-group', to: '/team' },
+  { title: 'Contacts', prependIcon: 'fa-solid fa-address-book', to: '/contacts' },
+  { title: 'Invoices Balances', prependIcon: 'fa-solid fa-file-invoice', to: '/invoices' },
   { title: 'Pages', type: 'subheader' },
-  { title: 'Profile Form', icon: 'mdi:mdi-account', to: '/form' },
-  { title: 'Calendar', icon: 'mdi:mdi-calendar-today', to: '/calendar' },
-  { title: 'FAQ Page', icon: 'mdi:mdi-frequently-asked-questions', to: '/faq' },
+  { title: 'Profile Form', prependIcon: 'fa-solid fa-user', to: '/form' },
+  { title: 'Calendar', prependIcon: 'fa-regular fa-calendar-days', to: '/calendar' },
+  { title: 'FAQ Page', prependIcon: 'fa-solid fa-clipboard-question', to: '/faq' },
   { title: 'Charts', type: 'subheader' },
-  { title: 'Bar Chart', icon: 'mdi:mdi-chart-bar', to: '/bar' },
-  { title: 'Pie Chart', icon: 'mdi:mdi-chart-pie', to: '/pie' },
-  { title: 'Line Chart', icon: 'mdi:mdi-chart-line', to: '/line' },
-  { title: 'Geography Chart', icon: 'mdi:mdi-map', to: '/geo' },
+  { title: 'Bar Chart', prependIcon: 'fa-regular fa-chart-bar', to: '/bar' },
+  { title: 'Pie Chart', prependIcon: 'fa-solid fa-chart-pie', to: '/pie' },
+  { title: 'Line Chart', prependIcon: 'fa-solid fa-chart-line', to: '/line' },
+  { title: 'Geography Chart', prependIcon: 'fa-solid fa-map', to: '/geo' },
 ]
+
+const drawer = ref(true)
+const rail = ref(false)
 </script>
 
 <template>
-  <v-navigation-drawer color="#1F2A40">
+  <v-navigation-drawer color="#1F2A40" v-model="drawer" :rail="rail" permanent @click="() => { rail = false }">
     <v-list>
-      <v-list-item prepend-avatar="https://cdn.vuetifyjs.com/images/john.png" title="John Leider"
-        subtitle="john@google.com">
-        <template v-slot:append>
-          <v-btn size="small" variant="text" icon="mdi:mdi-menu-down"></v-btn>
+      <v-list-item v-show="!rail">
+        <h1>ADMINIS</h1>
+        <template #append>
+          <v-btn variant="text" icon="fa-solid fa-circle-chevron-left" @click.stop="() => { rail = !rail }"></v-btn>
         </template>
       </v-list-item>
+      <v-list-item prepend-avatar="/favicon.ico" title="Romeo Méndez" />
     </v-list>
 
     <v-divider></v-divider>
 
     <v-list :lines="false" nav>
       <template v-for="(item) in items" :key="item.title">
-        <v-list-subheader v-if="item.type === 'subheader'" :title="item.title" />
-        <v-list-item v-else active-color="secondary" :to="item.to">
-          <template v-slot:prepend>
-            <v-icon :icon="item.icon"></v-icon>
-          </template>
-
-          <v-list-item-title v-text="item.title"></v-list-item-title>
-        </v-list-item>
+        <v-list-subheader v-if="item.type === 'subheader'" :title="item.title" class="text-h6" />
+        <v-list-item v-else active-color="secondary" v-bind="item" />
       </template>
     </v-list>
   </v-navigation-drawer>

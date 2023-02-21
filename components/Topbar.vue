@@ -8,7 +8,7 @@ const toggleTheme = () => theme.global.name.value = theme.global.current.value.d
 <template>
   <v-app-bar color="#1F2A40">
     <v-container fluid>
-      <v-row justify="space-between">
+      <v-row justify="space-between" align="center">
         <v-col cols="3">
           <v-text-field density="compact" variant="plain" label="Search" append-inner-icon="mdi:mdi-magnify" single-line
             hide-details />
