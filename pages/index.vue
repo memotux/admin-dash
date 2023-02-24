@@ -2,8 +2,6 @@
 
 <template>
   <div>
-    <h1>Dashboard</h1>
+    <Header title="Dashboard" subtitle="Welcome to your Dashboard" />
   </div>
 </template>
-
-<style scoped></style>
