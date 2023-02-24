@@ -4,10 +4,10 @@
 
     <Topbar />
 
-    <v-main style="min-height: 300px;">
-      <v-container class="d-flex justify-center align-center text-h5" style="min-height: 300px;">
+    <VMain style="min-height: 300px;">
+      <VContainer style="min-height: 300px;">
         <NuxtPage />
-      </v-container>
-    </v-main>
+      </VContainer>
+    </VMain>
   </v-app>
 </template>
