@@ -15,7 +15,17 @@ const headers = [
   { title: 'Date', align: 'start', key: 'date', },
 ]
 
-const action = ref(true)
+const actions = new Set()
+
+const updateActionVal = (item: number) => {
+  if (actions.has(item)) {
+    actions.delete(item)
+    return
+  }
+  actions.add(item)
+}
+
+const actionVal = (id: number) => actions.has(id)
 
 </script>
 
@@ -24,8 +34,8 @@ const action = ref(true)
     <Header title="Invoices" subtitle="List of Invoices Balances" />
     <VContainer>
       <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataInvoices" item-value="name" class="elevation-1">
-        <template #item.action>
-          <VCheckboxBtn v-model="action" disabled />
+        <template #item.action="{ item }">
+          <VCheckboxBtn :value="() => actionVal(item.raw.id)" @click="() => updateActionVal(item.raw.id)" />
         </template>
         <template #item.cost="{ item }">
           <VChip :color="colorTokens.dark.greenAccent[500]" size="large">
