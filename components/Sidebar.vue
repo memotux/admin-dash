@@ -28,7 +28,7 @@ const drawerColor = computed(() => theme.global.current.value.dark ? '#1F2A40' :
     @click="() => { ui.rail = false }">
     <v-list>
       <v-list-item v-show="!ui.rail">
-        <h1>ADMINIS</h1>
+        <h1>TUXMIN</h1>
         <template #append>
           <v-btn variant="text" icon="fa-solid fa-circle-chevron-left" @click.stop="() => { ui.rail = !ui.rail }"></v-btn>
         </template>
