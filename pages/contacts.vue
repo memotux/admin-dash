@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { mockDataContacts } from "@/data/mochData";
+const { data: mockDataContacts } = await useAsyncData('contacts', () => queryContent('/data/contacts').findOne())
 
 const search = ref('')
 
@@ -24,9 +24,9 @@ const headers = [
 <template>
   <div>
     <Header title="Contacts" subtitle="List of Contacts for future reference" />
-    <VContainer>
-      <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataContacts" item-value="name" class="elevation-1"
-        :search="search">
+    <VContainer v-if="mockDataContacts">
+      <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataContacts.contacts" item-value="name"
+        class="elevation-1" :search="search">
         <template #top>
           <VToolbar>
             <VDivider class="mx-4" inset vertical />

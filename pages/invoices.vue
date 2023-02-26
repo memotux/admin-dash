@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { mockDataInvoices } from "@/data/mochData";
+
+const { data: mockDataInvoices } = await useAsyncData('invoices', () => queryContent('/data/invoices').findOne())
 
 const headers = [
   { title: 'Action', key: 'action', sortable: false },
@@ -32,8 +33,9 @@ const actionVal = (id: number) => actions.has(id)
 <template>
   <div>
     <Header title="Invoices" subtitle="List of Invoices Balances" />
-    <VContainer>
-      <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataInvoices" item-value="name" class="elevation-1">
+    <VContainer v-if="mockDataInvoices">
+      <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataInvoices.invoices" item-value="name"
+        class="elevation-1">
         <template #item.action="{ item }">
           <VCheckboxBtn :value="() => actionVal(item.raw.id)" @click="() => updateActionVal(item.raw.id)" />
         </template>

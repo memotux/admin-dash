@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { useTheme } from 'vuetify'
-import { mockDataTeam } from "@/data/mochData";
 
 const theme = useTheme()
+
+const { data: mockDataTeam } = await useAsyncData('team', () => queryContent('/data/team').findOne())
+
 const headers = [
   {
     title: 'Name',
@@ -36,8 +38,8 @@ const accessIcons = {
             <th v-for="item in headers" :key="item.key">{{ item.title }}</th>
           </tr>
         </thead>
-        <tbody>
-          <tr v-for="item in mockDataTeam" :key="item.id">
+        <tbody v-if="mockDataTeam">
+          <tr v-for="item in mockDataTeam.team" :key="item.id">
             <td>{{ item.name }}</td>
             <td>{{ item.email }}</td>
             <td>{{ item.age }}</td>
