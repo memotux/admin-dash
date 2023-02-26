@@ -7,7 +7,7 @@ export const useUi = () => useState('ui', () => ({
 
 export const useContactAction = () => useState('contactAction', () => new Set<number>())
 
-export const UserSchema = {
+export const UserSchema = z.object({
   firstName: z.string()
     .min(2, { message: 'Nombre debe contener tres o mas caracteres.' })
     .refine((val) => !/[0-9]/.test(val), { message: 'Nombre NO debe contener numeros.' }),
@@ -21,9 +21,11 @@ export const UserSchema = {
       !/^((\+[503|1][ -]?)|(\([503|1]\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/.test(val), { message: 'Telefono no valido.' }),
   address: z.string()
     .min(3, { message: 'Direccion debe contener tres o mas caracteres.' })
-}
+})
 
-export const useFormState = () => useState('form', () => ({
+type User = z.infer<typeof UserSchema>
+
+export const useFormState = () => useState<User>('form', () => ({
   firstName: '',
   lastName: '',
   email: '',

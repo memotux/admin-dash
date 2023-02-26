@@ -8,9 +8,9 @@ const handleSubmit = async (event: any) => {
   }
 }
 
-const fieldTest = (val: any, field: keyof typeof UserSchema) => {
-  const res = UserSchema[field].safeParse(val)
-  return res.success ? true : res.error.errors[0].message
+const fieldTest = (val: any, field: keyof typeof UserSchema.shape) => {
+  const res = UserSchema.shape[field].safeParse(val)
+  return res.success || res.error.errors[0].message
 }
 
 const fieldRules = {
