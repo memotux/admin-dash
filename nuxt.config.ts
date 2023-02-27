@@ -12,6 +12,16 @@ export default defineNuxtConfig({
       }
     }
   },
+  app: {
+    head: {
+      titleTemplate: '%s | TuxMin',
+      meta: [{
+        name: "viewport",
+        content: "width=device-width, initial-scale=1"
+      },
+      { charset: "utf-8" }],
+    }
+  },
   build: {
     transpile: ['@fullcalendar.*']
   }

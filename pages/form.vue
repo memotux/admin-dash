@@ -20,11 +20,17 @@ const fieldRules = {
   contact: (val: any) => fieldTest(val, 'contact'),
   address: (val: any) => fieldTest(val, 'address')
 }
+
+const headData = {
+  title: 'Create User',
+  description: 'Create a New User Profile'
+}
+useSeoMeta(headData)
 </script>
 
 <template>
   <VContainer>
-    <Header title="Create User" subtitle="Create a Nuew User Profile" />
+    <Header v-bind="headData" />
     <VForm @submit.prevent="handleSubmit">
       <VContainer>
         <VRow>

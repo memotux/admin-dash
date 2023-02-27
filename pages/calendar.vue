@@ -62,11 +62,17 @@ const calendarOptions = {
   eventTextColor: color['grey-900']
 }
 
+const headData = {
+  title: 'Calendar',
+  description: 'Full Calendar Interactive Page'
+}
+useSeoMeta(headData)
+
 </script>
 
 <template>
   <VContainer>
-    <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
+    <Header v-bind="headData" />
     <VContainer>
       <VRow justify="space-between">
         <VCol cols="3" class="bg-primary-400">

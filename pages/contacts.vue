@@ -19,11 +19,17 @@ const headers = [
   { title: 'ZipCode', align: 'start', key: 'zipCode', },
 ]
 
+const headData = {
+  title: 'Contacts',
+  description: 'List of Contacts for future reference'
+}
+useSeoMeta(headData)
+
 </script>
 
 <template>
   <div>
-    <Header title="Contacts" subtitle="List of Contacts for future reference" />
+    <Header v-bind="headData" />
     <VContainer v-if="mockDataContacts">
       <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataContacts.contacts" item-value="name"
         class="elevation-1" :search="search">

@@ -26,11 +26,17 @@ const accessIcons = {
   'manager': 'fa-solid fa-shield-halved',
   'user': 'fa-solid fa-lock-open'
 }
+
+const headData = {
+  title: 'Team',
+  description: 'Managing Team Members'
+}
+useSeoMeta(headData)
 </script>
 
 <template>
   <div>
-    <Header title="Team" subtitle="Managing the Team Members" />
+    <Header v-bind="headData" />
     <VContainer>
       <VTable class="elevation-1 rounded bg-primary-400">
         <thead>

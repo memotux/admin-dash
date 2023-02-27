@@ -28,11 +28,17 @@ const updateActionVal = (item: number) => {
 
 const actionVal = (id: number) => actions.has(id)
 
+const headData = {
+  title: 'Invoices',
+  description: 'List of Invoices Balances'
+}
+useSeoMeta(headData)
+
 </script>
 
 <template>
   <div>
-    <Header title="Invoices" subtitle="List of Invoices Balances" />
+    <Header v-bind="headData" />
     <VContainer v-if="mockDataInvoices">
       <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataInvoices.invoices" item-value="name"
         class="elevation-1">

@@ -1,7 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const headData = {
+  title: 'Dashboard',
+  // description: 'Full Calendar Interactive Page'
+}
+useSeoMeta(headData)
+</script>
 
 <template>
   <div>
-    <Header title="Dashboard" subtitle="Welcome to your Dashboard" />
+    <Header v-bind="headData" />
   </div>
 </template>
