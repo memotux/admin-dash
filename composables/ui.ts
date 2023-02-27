@@ -149,3 +149,13 @@ export const colorTokens = {
     },
   }
 }
+
+export const genColors = (theme: keyof typeof colorTokens) => {
+  return Object.entries(colorTokens[theme]).reduce<Record<string, string>>((acc, cur) => {
+    const colors = Object.entries(cur[1])
+    colors.forEach((val) => {
+      acc[`${cur[0]}-${val[0]}`] = val[1]
+    })
+    return acc
+  }, {})
+}

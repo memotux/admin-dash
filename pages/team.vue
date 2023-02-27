@@ -19,7 +19,7 @@ const headers = [
 ]
 
 const getColor = (type: string) => {
-  return type === 'admin' ? colorTokens[theme.global.name.value as 'dark' | 'light'].greenAccent[600] : colorTokens[theme.global.name.value as 'dark' | 'light'].greenAccent[700]
+  return type === 'admin' ? 'greenAccent-600' : 'greenAccent-700'
 }
 const accessIcons = {
   'admin': 'fa-solid fa-screwdriver-wrench',
@@ -32,7 +32,7 @@ const accessIcons = {
   <div>
     <Header title="Team" subtitle="Managing the Team Members" />
     <VContainer>
-      <VTable class="elevation-1 rounded">
+      <VTable class="elevation-1 rounded bg-primary-400">
         <thead>
           <tr>
             <th v-for="item in headers" :key="item.key">{{ item.title }}</th>
