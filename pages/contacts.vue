@@ -28,7 +28,7 @@ const headers = [
       <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataContacts.contacts" item-value="name"
         class="elevation-1" :search="search">
         <template #top>
-          <VToolbar>
+          <VToolbar color="primary-400">
             <VDivider class="mx-4" inset vertical />
             <VSpacer />
             <VTextField v-model="search" append-icon="mdi:mdi-magnify" label="Search" single-line hide-details />
@@ -38,3 +38,9 @@ const headers = [
     </VContainer>
   </div>
 </template>
+
+<style scoped>
+.v-data-table {
+  --v-theme-surface: var(--v-theme-primary-400)
+}
+</style>

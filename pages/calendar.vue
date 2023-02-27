@@ -1,20 +1,20 @@
 <script lang="ts" setup>
 import { useTheme } from 'vuetify'
-import { DateSelectArg, formatDate } from '@fullcalendar/core'
+import { formatDate } from '@fullcalendar/core'
 import FullCalendar from "@fullcalendar/vue3";
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
-import interactionPlugin, { DateClickArg } from '@fullcalendar/interaction'
+import interactionPlugin from '@fullcalendar/interaction'
 
-interface CalendarEvent { id: string, title: string, start: string }
+import type { DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/core'
 
 const theme = useTheme()
-const color = colorTokens[theme.global.name.value as 'dark' | 'light']
+const color = genColors(theme.global.name.value as 'dark' | 'light')
 
-const currentEvents = ref<CalendarEvent[]>([])
+const currentEvents = ref<EventApi[]>([])
 
-const setEvents = (events: any[]) => { currentEvents.value = events }
+const eventsSet = (events: EventApi[]) => { currentEvents.value = events.sort((a, b) => new Date(a.start!).getTime() > new Date(b.start!).getTime() ? 1 : 0) }
 
 const select = (info: DateSelectArg) => {
   const title = prompt("Enter title for new event...")
@@ -33,7 +33,7 @@ const select = (info: DateSelectArg) => {
   }
 }
 
-const handleEventClick = (selected: any) => {
+const eventClick = (selected: EventClickArg) => {
   if (confirm(`Delete event: ${selected.event.title}`)) {
     selected.event.remove()
   }
@@ -52,14 +52,14 @@ const calendarOptions = {
   selectMirror: true,
   // dayMaxEvent: true,
   select,
-  eventClick: handleEventClick,
-  eventsSet: setEvents,
+  eventClick,
+  eventsSet,
   initialEvents: [
     { id: '1234', title: 'All-day event', date: '2023-02-14' },
     { id: '4321', title: 'Timed event', date: '2023-02-28' },
   ],
-  eventColor: color.greenAccent[500],
-  eventTextColor: color.grey[900]
+  eventColor: color['greenAccent-500'],
+  eventTextColor: color['grey-900']
 }
 
 </script>
@@ -69,15 +69,15 @@ const calendarOptions = {
     <Header title="Calendar" subtitle="Full Calendar Interactive Page" />
     <VContainer>
       <VRow justify="space-between">
-        <VCol cols="3" class="bg-surface">
-          <VList>
+        <VCol cols="3" class="bg-primary-400">
+          <VList class="bg-primary-500">
             <VListSubheader>Events</VListSubheader>
 
-            <VListItem v-for="(item) in currentEvents" :key="item.id" :title="item.title" :subtitle="formatDate(item.start, {
+            <VListItem v-for="(item) in currentEvents" :key="item.id" :title="item.title" :subtitle="formatDate(item.start!, {
               month: 'long',
               year: 'numeric',
               day: 'numeric',
-            })" active-color="secondary" class="bg-secondary mb-4" rounded="xl">
+            })" active-color="secondary" class="bg-greenAccent-500 mb-4" rounded="xl">
             </VListItem>
           </VList>
         </VCol>

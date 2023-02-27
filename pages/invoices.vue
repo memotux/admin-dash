@@ -48,3 +48,9 @@ const actionVal = (id: number) => actions.has(id)
     </VContainer>
   </div>
 </template>
+
+<style scoped>
+.v-data-table {
+  --v-theme-surface: var(--v-theme-primary-400)
+}
+</style>
