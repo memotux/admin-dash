@@ -23,5 +23,8 @@
     "vuetify": "^3.1.5",
     "zod": "^3.20.6"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chart.js": "^4.2.1",
+    "vue-chart-3": "^3.1.8"
+  }
 }
