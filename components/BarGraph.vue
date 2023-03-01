@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { BarChart } from 'vue-chart-3'
-import { useTheme } from 'vuetify'
 
 const props = defineProps<{
   data: {
@@ -14,10 +13,8 @@ const props = defineProps<{
     donut: number
     donutColor: string
   }[]
+  isDashboard?: boolean
 }>()
-
-const theme = useTheme()
-const colors = theme.current.value.colors
 
 const options = { grouped: false, scales: { y: { stacked: true } }, parsing: { xAxisKey: 'country' } }
 
@@ -61,7 +58,7 @@ const data = {
 </script>
 
 <template>
-  <BarChart style="height: 75vh;" :chartData="data" :options="options" />
+  <BarChart :style="{ height: isDashboard ? '25vh' : '75vh' }" :chartData="data" :options="options" />
 </template>
 
 <style scoped></style>
