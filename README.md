@@ -1,6 +1,6 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Admin Dashboard
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Inpired on [React Admin Dashboard](https://github.com/ed-roh/react-admin-dashboard) by [Ed-Roh](https://github.com/ed-roh): [Youtube](https://youtu.be/wYpCWwD1oz0), I refactor all React logic to [Nuxt/VueJS](https://nuxt.com) logic, using [Vuetify](https://vuetifyjs.com) components. 
 
 ## Setup
 
