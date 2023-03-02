@@ -47,8 +47,10 @@ useSeoMeta(headData)
             <td>{{ item.age }}</td>
             <td>{{ item.phone }}</td>
             <td>
-              <VChip :color="getColor(item.access)" size="large"
-                :append-icon="accessIcons[item.access as 'admin' | 'manager' | 'user']">
+              <VChip
+                :color="getColor(item.access)"
+                size="large"
+                :append-icon="accessIcons[item.access as keyof typeof accessIcons]">
                 {{ item.access }}
               </VChip>
             </td>

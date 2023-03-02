@@ -35,26 +35,45 @@ useSeoMeta(headData)
       <VContainer>
         <VRow>
           <VCol>
-            <VTextField v-model="formState.firstName" :rules="[fieldRules.firstName]" label="First name"
+            <VTextField
+              v-model="formState.firstName"
+              :rules="[fieldRules.firstName]"
+              label="First name"
               color="primary" />
           </VCol>
           <VCol>
-            <VTextField v-model="formState.lastName" :rules="[fieldRules.lastName]" label="Last name" color="primary" />
+            <VTextField
+              v-model="formState.lastName"
+              :rules="[fieldRules.lastName]"
+              label="Last name"
+              color="primary" />
           </VCol>
         </VRow>
         <VRow>
           <VCol>
-            <VTextField v-model="formState.email" :rules="[fieldRules.email]" label="Email" color="primary" />
+            <VTextField
+              v-model="formState.email"
+              :rules="[fieldRules.email]"
+              label="Email"
+              color="primary" />
           </VCol>
         </VRow>
         <VRow>
           <VCol>
-            <VTextField v-model="formState.contact" :rules="[fieldRules.contact]" label="Contact" color="primary" />
+            <VTextField
+              v-model="formState.contact"
+              :rules="[fieldRules.contact]"
+              label="Contact"
+              color="primary" />
           </VCol>
         </VRow>
         <VRow>
           <VCol>
-            <VTextField v-model="formState.address" :rules="[fieldRules.address]" label="Address" color="primary" />
+            <VTextField
+              v-model="formState.address"
+              :rules="[fieldRules.address]"
+              label="Address"
+              color="primary" />
           </VCol>
         </VRow>
         <VRow>

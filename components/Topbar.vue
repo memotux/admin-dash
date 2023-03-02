@@ -11,7 +11,12 @@ const drawerColor = computed(() => theme.global.current.value.dark ? 'primary-40
     <v-container fluid>
       <v-row justify="space-between" align="center">
         <v-col cols="3">
-          <v-text-field density="compact" variant="plain" label="Search" append-inner-icon="mdi:mdi-magnify" single-line
+          <v-text-field
+            density="compact"
+            variant="plain"
+            label="Search"
+            append-inner-icon="mdi:mdi-magnify"
+            single-line
             hide-details />
         </v-col>
         <v-col cols="3" class="text-right">

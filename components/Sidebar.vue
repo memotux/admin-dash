@@ -24,13 +24,20 @@ const drawerColor = computed(() => theme.global.current.value.dark ? 'primary-40
 </script>
 
 <template>
-  <v-navigation-drawer :color="drawerColor" v-model="ui.drawer" :rail="ui.rail" permanent
+  <v-navigation-drawer
+    :color="drawerColor"
+    v-model="ui.drawer"
+    :rail="ui.rail"
+    permanent
     @click="() => { ui.rail = false }">
     <v-list>
       <v-list-item v-show="!ui.rail">
         <h1>TUXMIN</h1>
         <template #append>
-          <v-btn variant="text" icon="fa-solid fa-circle-chevron-left" @click.stop="() => { ui.rail = !ui.rail }"></v-btn>
+          <v-btn
+            variant="text"
+            icon="fa-solid fa-circle-chevron-left"
+            @click.stop="() => { ui.rail = !ui.rail }" />
         </template>
       </v-list-item>
       <v-list-item prepend-avatar="/favicon.ico" title="Romeo Méndez" />
@@ -40,8 +47,14 @@ const drawerColor = computed(() => theme.global.current.value.dark ? 'primary-40
 
     <v-list :lines="false" nav>
       <template v-for="(item) in items" :key="item.title">
-        <v-list-subheader v-if="item.type === 'subheader'" :title="item.title" class="text-h6" />
-        <v-list-item v-else :active-color="drawerColor ? 'secondary' : 'primary'" v-bind="item" />
+        <v-list-subheader
+          v-if="item.type === 'subheader'"
+          :title="item.title"
+          class="text-h6" />
+        <v-list-item
+          v-else
+          :active-color="drawerColor ? 'secondary' : 'primary'"
+          v-bind="item" />
       </template>
     </v-list>
   </v-navigation-drawer>

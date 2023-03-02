@@ -56,5 +56,8 @@ const options = {
 </script>
 
 <template>
-  <LineChart :style="{ height: isDashboard ? '25vh' : '75vh' }" :chartData="data" :options="options" />
+  <LineChart
+    :style="{ height: isDashboard ? '25vh' : '75vh' }"
+    :chartData="data"
+    :options="options" />
 </template>

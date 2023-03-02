@@ -12,7 +12,11 @@ const { data, pending } = await useAsyncData('piechart', () => queryContent('/da
 <template>
   <VContainer>
     <Header v-bind="headData" />
-    <VProgressCircular v-if="pending || !data" indeterminate size="100" color="warning" />
+    <VProgressCircular
+      v-if="pending || !data"
+      indeterminate
+      size="100"
+      color="warning" />
     <VContainer v-else class="rounded-lg elevation-8 bg-primary-400">
       <PieGraph :data="data.pie" />
     </VContainer>

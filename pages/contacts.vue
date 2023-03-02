@@ -31,13 +31,23 @@ useSeoMeta(headData)
   <div>
     <Header v-bind="headData" />
     <VContainer v-if="mockDataContacts">
-      <VDataTable :items-per-page="-1" :headers="headers" :items="mockDataContacts.contacts" item-value="name"
-        class="elevation-1" :search="search">
+      <VDataTable
+        :items-per-page="-1"
+        :headers="headers"
+        :items="mockDataContacts.contacts"
+        item-value="name"
+        class="elevation-1"
+        :search="search">
         <template #top>
           <VToolbar color="primary-400">
             <VDivider class="mx-4" inset vertical />
             <VSpacer />
-            <VTextField v-model="search" append-icon="mdi:mdi-magnify" label="Search" single-line hide-details />
+            <VTextField
+              v-model="search"
+              append-icon="mdi:mdi-magnify"
+              label="Search"
+              single-line
+              hide-details />
           </VToolbar>
         </template>
       </VDataTable>

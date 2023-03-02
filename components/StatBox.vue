@@ -16,7 +16,12 @@ defineProps<{
         <h4 class="text-grey-100">{{ title }}</h4>
       </VCol>
       <VCol>
-        <VProgressCircular :rotate="360" :size="100" :width="15" :model-value="progress" color="secondary"
+        <VProgressCircular
+          :rotate="360"
+          :size="100"
+          :width="15"
+          :model-value="progress"
+          color="secondary"
           bg-color="blueAccent-700" />
       </VCol>
     </VRow>

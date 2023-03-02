@@ -67,6 +67,12 @@ const headData = {
 }
 useSeoMeta(headData)
 
+const formatSubtitle = (date: string) => formatDate(date, {
+  month: 'long',
+  year: 'numeric',
+  day: 'numeric',
+})
+
 </script>
 
 <template>
@@ -78,11 +84,14 @@ useSeoMeta(headData)
           <VList class="bg-primary-500">
             <VListSubheader>Events</VListSubheader>
 
-            <VListItem v-for="(item) in currentEvents" :key="item.id" :title="item.title" :subtitle="formatDate(item.start!, {
-              month: 'long',
-              year: 'numeric',
-              day: 'numeric',
-            })" active-color="secondary" class="bg-greenAccent-500 mb-4" rounded="xl">
+            <VListItem
+              v-for="(item) in currentEvents"
+              :key="item.id"
+              :title="item.title"
+              :subtitle="formatSubtitle(item.start!.toString())"
+              active-color="secondary"
+              class="bg-greenAccent-500 mb-4"
+              rounded="xl">
             </VListItem>
           </VList>
         </VCol>

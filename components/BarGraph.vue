@@ -16,7 +16,13 @@ const props = defineProps<{
   isDashboard?: boolean
 }>()
 
-const options = { grouped: false, scales: { y: { stacked: true } }, parsing: { xAxisKey: 'country' } }
+const options = {
+  grouped: false,
+  scales: {
+    y: { stacked: true }
+  },
+  parsing: { xAxisKey: 'country' }
+}
 
 const data = {
   labels: props.data.map(val => val.country),
@@ -58,7 +64,8 @@ const data = {
 </script>
 
 <template>
-  <BarChart :style="{ height: isDashboard ? '25vh' : '75vh' }" :chartData="data" :options="options" />
+  <BarChart :style="{ height: isDashboard ? '25vh' : '75vh' }" :chartData="data"
+    :options="options" />
 </template>
 
 <style scoped></style>
