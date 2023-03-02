@@ -20,7 +20,7 @@ const items = [
 
 const ui = useUi()
 const theme = useTheme()
-const drawerColor = computed(() => theme.global.current.value.dark ? '#1F2A40' : undefined)
+const drawerColor = computed(() => theme.global.current.value.dark ? 'primary-400' : 'primary-600')
 </script>
 
 <template>

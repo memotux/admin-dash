@@ -10,7 +10,6 @@ import interactionPlugin from '@fullcalendar/interaction'
 import type { DateSelectArg, EventApi, EventClickArg } from '@fullcalendar/core'
 
 const theme = useTheme()
-const color = genColors(theme.global.name.value as 'dark' | 'light')
 
 const currentEvents = ref<EventApi[]>([])
 
@@ -58,8 +57,8 @@ const calendarOptions = {
     { id: '1234', title: 'All-day event', date: '2023-02-14' },
     { id: '4321', title: 'Timed event', date: '2023-02-28' },
   ],
-  eventColor: color['greenAccent-500'],
-  eventTextColor: color['grey-900']
+  eventColor: theme.current.value.colors['greenAccent-500'],
+  eventTextColor: theme.current.value.colors['grey-900']
 }
 
 const headData = {

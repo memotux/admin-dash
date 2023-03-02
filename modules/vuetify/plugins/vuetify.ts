@@ -5,6 +5,7 @@ import { createVuetify } from 'vuetify'
 import { VDataTable } from 'vuetify/labs/VDataTable'
 import { aliases, fa } from 'vuetify/iconsets/fa'
 import { mdi } from 'vuetify/iconsets/mdi'
+import { genColors } from "./colors";
 
 const darkColors = genColors('dark')
 const lightColors = genColors('light')

@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+import { useTheme } from "vuetify";
+
+const theme = useTheme()
 
 const { data: mockDataInvoices } = await useAsyncData('invoices', () => queryContent('/data/invoices').findOne())
 
@@ -46,7 +49,7 @@ useSeoMeta(headData)
           <VCheckboxBtn :value="() => actionVal(item.raw.id)" @click="() => updateActionVal(item.raw.id)" />
         </template>
         <template #item.cost="{ item }">
-          <VChip :color="colorTokens.dark.greenAccent[500]" size="large">
+          <VChip :color="theme.current.value.colors['greenAccent-500']" size="large">
             $ {{ item.raw.cost }}
           </VChip>
         </template>

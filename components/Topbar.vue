@@ -3,7 +3,7 @@ import { useTheme } from "vuetify"
 
 const theme = useTheme()
 const toggleTheme = () => theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
-const drawerColor = computed(() => theme.global.current.value.dark ? '#1F2A40' : undefined)
+const drawerColor = computed(() => theme.global.current.value.dark ? 'primary-400' : 'primary-600')
 </script>
 
 <template>
