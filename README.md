@@ -1,6 +1,17 @@
 # Nuxt 3 Admin Dashboard
 
-Inpired on [React Admin Dashboard](https://github.com/ed-roh/react-admin-dashboard) by [Ed-Roh](https://github.com/ed-roh): [Youtube](https://youtu.be/wYpCWwD1oz0), I refactor all React logic to [Nuxt/VueJS](https://nuxt.com) logic, using [Vuetify](https://vuetifyjs.com) components. 
+Inpired on [React Admin Dashboard](https://github.com/ed-roh/react-admin-dashboard) by [Ed-Roh](https://github.com/ed-roh): [Youtube](https://youtu.be/wYpCWwD1oz0).
+
+I refactor all React logic to [Nuxt/VueJS](https://nuxt.com) logic, using [Vuetify](https://vuetifyjs.com) components. 
+
+## Features
+
+- NuxtJS Framework
+- Vuetify as UI Framework with a module and components auto import
+- Nuxt Content module for content and data fetch
+- Vue-Chart-3 with ChartJS for data representation
+- FullCalendar for Calendar events
+- Zod for Form fields validation
 
 ## Setup
 
