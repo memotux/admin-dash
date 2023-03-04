@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { scaleQuantize, schemeBlues, geoNaturalEarth1, ExtendedFeature } from "d3";
 const headData = {
   title: 'Dashboard',
   description: 'Welcome to your dashboard'
@@ -8,6 +9,9 @@ useSeoMeta(headData)
 const { data: lineChart, pending: pendingLine } = await useAsyncData('Linechart', () => queryContent('/data/line').findOne())
 const { data: barChart, pending: pendingBar } = await useAsyncData('barchart', () => queryContent('/data/bar').findOne())
 const { data: transactions } = await useAsyncData('transactions', () => queryContent('/data/transactions').findOne())
+const { data: geo } = await useAsyncData('geo', () => queryContent('/data/geo').findOne())
+const { data: countries } = await useAsyncData('countries', () => queryContent('/data/geofeat').findOne())
+const featuredId = (d: ExtendedFeature) => d.id as string
 </script>
 
 <template>
@@ -137,7 +141,23 @@ const { data: transactions } = await useAsyncData('transactions', () => queryCon
       <VCol cols="4">
         <VContainer class="bg-primary-400 rounded-lg ma-2 text-center">
           <h3 class="mb-4">Geography Based Traffic</h3>
-          <VProgressCircular size="100" color="warning" indeterminate />
+          <VProgressCircular
+            v-if="!geo || !countries"
+            indeterminate
+            size="100"
+            color="warning" />
+          <GeoGraph v-else
+            :data="geo.geo"
+            :features="countries.geoFeat"
+            :id="d => d.id"
+            :value="d => d.value"
+            :scale="scaleQuantize"
+            :range="schemeBlues[9]"
+            :projection="geoNaturalEarth1()"
+            :width="975"
+            :height="610"
+            :featureId="featuredId"
+            :title="(f, d) => `${f.properties!.name}: ${d?.value ?? 'N/D'}`" />
         </VContainer>
       </VCol>
     </VRow>
