@@ -9,7 +9,7 @@ I refactor all React logic to [Nuxt/VueJS](https://nuxt.com) logic, using [Vueti
 - NuxtJS Framework
 - Vuetify as UI Framework with a module and components auto import
 - Nuxt Content module for content and data fetch
-- Vue-Chart-3 with ChartJS for data representation
+- Vue-Chart-3 with ChartJS, D3 and Observablehq/plots for data representation
 - FullCalendar for Calendar events
 - Zod for Form fields validation
 
