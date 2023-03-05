@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 // import { BarChart } from 'vue-chart-3'
-import { plot, barY, ruleY } from '@observablehq/plot'
+import { plot, barY, ruleY, stackY, text } from '@observablehq/plot'
 
 const props = defineProps<{
   data: {
@@ -19,7 +19,9 @@ const props = defineProps<{
 
 const container = ref<HTMLDivElement | null>(null)
 
-const newData = props.data.reduce<{ country: string, food: string, value: number }[]>((acc, cur) => {
+interface BarDataTransform { country: string, food: string, value: number }
+
+const newData = props.data.reduce<BarDataTransform[]>((acc, cur) => {
   Object.entries(cur).splice(1).forEach((v) => {
     if (v[0].includes('Color')) {
       return
@@ -42,12 +44,19 @@ onMounted(() => {
     },
     x: {
       type: "band",
-      tickFormat: (d: string) => d,
+      // tickFormat: (d: string) => d,
       label: 'Country'
     },
+    y: {
+      label: 'Food'
+    },
+    color: {
+      legend: true,
+    },
     marks: [
-      barY(newData, { x: 'country', y: 'value', fill: 'food' }),
-      ruleY([0])
+      barY(newData, stackY({ x: 'country', y: 'value', fill: (d: BarDataTransform) => d.food.toUpperCase() })),
+      text(newData, stackY({ x: 'country', y: 'value', text: 'value', title: (d: BarDataTransform) => `${d.food.toUpperCase()}: ${d.value}`, fontWeight: '800' })),
+      ruleY([0], {})
     ]
   }))
 })
